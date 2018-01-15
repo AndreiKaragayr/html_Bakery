@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/style.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+      html, body, #map-canvas{height:320px; margin:0; padding:0;}
+    </style>
+    <script type="text/javascript" scr="http://maps.googleapis.com/maps/api/js?key=AIzaSyDwss41M_zky9Cn6O7SFQx0iOeqvcRZI9c">
+    </script>
+    <script> //http://developers.google.com/maps/documentation/javascript/tutorial
+    function iniialize() {
+      var myLatlng = new google.maps.LatLng(50.450924, 30.522462);
+      var pos1 = new google.maps.LatLng(50.074606, 29.912009);
+      var pos2 = new google.maps.LatLng(50.288823, 29.505237);
+      var pos3 = new google.maps.LatLng(49.991917, 36.231170);
+      var pos4 = new google.maps.LatLng(50.111338, 36.121237);
+      var pos5 = new google.maps.LatLng(49.845025, 24.027985);
+      var map;
+      var imege = 'images/icon-map.png';
+      var mapOptions = {
+        zoom: 7,
+        zoomControl: false,
+        streetViewControl: false,
+        scrollwheel: false,
+        center: myLatlng
+      }
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      
+      var marker = new google.maps.Marker({
+          position: myLatlng,
+          icon: imege,
+          map: map,
+          title: 'м.Київ, Майдан Незалежності, 1'
+      });
+  
+      var marker = new google.maps.Marker({
+          position: pos1,
+          icon: imege,
+          map: map,
+          title: 'м.Фастов, Киевская область'
+      });
+
+      var marker = new google.maps.Marker({
+          position: pos2,
+          icon: imege,
+          map: map,
+          title: 'м.Брусилов, Житомирская область'
+      });
+
+      var marker = new google.maps.Marker({
+          position: pos3,
+          icon: imege,
+          map: map,
+          title: 'м.Харьков, Харьковская область'
+      });
+
+      var marker = new google.maps.Marker({
+          position: pos4,
+          icon: imege,
+          map: map,
+          title: 'м.Дергачі, Харківська область'
+      });
+
+      var marker = new google.maps.Marker({
+          position: pos5,
+          icon: imege,
+          map: map,
+          title: 'м.Львов, Львовская область'
+      });
+
+      var customMapType = new google.maps.StyledMapType([
+        {stylers: [{}]},
+        {
+          featureType: "landscape",
+          elementType: "geometry",
+          stylers: [
+            {
+                color: "#e4dec9"
+            }
+          ]
+        },
+        {
+          featureType: "landscape.natural",
+          elementType: "all",
+          stylers: [
+            {
+                visibility: "on"
+            },
+            {
+                color: "#e4dec9"
+            }
+          ]
+        },
+        {
+          featureType: 'water', // вода
+          stylers: [{color: '#acc5e3'}]
+        },
+        {
+          featureType: "road.highway",  //шоссейные дороги
+          elementType: "geometry",
+          stylers: [
+             { weight: "1.09" },
+             { visibility: "on" },
+             { hue: "#e0bb85" }
+          ]
+        },
+        {
+          featureType: "road",
+          elementType: "labels",
+          stylers: [
+               {
+                   visibility: "off"
+               }
+          ]
+        },
+        {
+          featureType: "road",
+          elementType: "labels.icon",
+          stylers: [
+            {
+                visibility: "off"
+            }
+          ]
+        },
+        {
+          featureType: "transit",
+          elementType: "all",
+          stylers: [
+              {
+                  visibility: "off"
+              }
+          ]
+        },
+        {
+          featureType: "administrative",
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+                visibility: "on"
+            },
+            {
+                color: "#444444"
+            },
+            {
+                lightness: "20"
+            },
+            {
+                weight: "2"
+            }
+          ]
+        },
+        {
+          featureType: "administrative",
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+                color: "#444444"
+            }
+          ]
+        },
+        {
+          featureType: "administrative.country",
+          elementType: "labels",
+          stylers: [
+            {
+                visibility: "off"
+            }
+          ]
+        },
+        {
+          featureType: "administrative.province",
+          elementType: "all",
+          stylers: [
+              {
+                  visibility: "off"
+              }
+          ]
+        },
+        {
+          featureType: "administrative.locality",
+          elementType: "labels",
+          stylers: [
+            {
+                visibility: "simplified"
+            }
+          ]
+        },
+        {
+          featureType: "administrative.neighborhood",
+          elementType: "all",
+          stylers: [
+            {
+                visibility: "off"
+            }
+          ]
+        },
+        {
+          featureType: "poi",
+          elementType: "all",
+          stylers: [
+              {
+                  visibility: "simplified"
+              }
+          ]
+        },
+        {
+          featureType: "poi.business",
+          elementType: "all",
+          stylers: [
+              {
+                  visibility: "off"
+              }
+          ]
+        },
+        {
+          featureType: "poi.business",
+          elementType: "geometry",
+          stylers: [
+              {
+                  visibility: "off"
+              }
+          ]
+        }
+        ])
+      var customMapTypeId = 'custom_style';
+      map.mapTypes.set(customMapTypeId, customMapType);
+      map.setMapTypeId(customMapTypeId);
+
+          // To add the marker to the map, call setMap();
+          marker.setMap(map);
+    }
+    function loadScript() {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' + 'callback=iniialize';
+      document.body.appendChild(script);
+    }
+
+    window.onload = loadScript;
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    </head>
+<body>
+<header class="header" id="contact">
+	<div class="container">
+		<div class="row">
+			<div class="navigation">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">
+            <img class="responsive-img" src="images/panella-logo.png" align="logo">
+              <h1 class="center-align">Italian bakery</h1>
+            </a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                  <li><a href="index.html">Главная</a></li>
+                  <li><a href="#">Наша продукция</a>
+                      <ul class="sub-menu center-align">
+                        <li><a href="#">Хлеб житний</a></li>
+                        <li><a href="#">Хлеб зерновой</a></li>
+                        <li><a href="#">Булочки</a></li>
+                        <li><a href="#">Караваи</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="#">Рецепты</a></li>
+                  <li><a href="contact.html">Контакты</a></li>
+                  <li>
+          	          <div class="contacts-phone">
+          	          	<a href="tel:+388003094756" class="phone">+388003094756</a>
+          	            <a href="tel:+380483094576" class="phone">+380483094576</a>
+          	          </div>
+          	      </li>
+                </ul>
+                  <ul class="side-nav" id="mobile-demo">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#">Наша продукция</a></li>
+                    <li><a href="#">Рецепты</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                    <li>
+                      <div class="contacts-phone">
+                        <a href="tel:+388003094756" class="phone">+388003094756</a>
+                        <a href="tel:+380483094576" class="phone">+380483094576</a>
+                      </div>
+                  </li>
+                  </ul>
+            </div>
+        </nav>
+			</div>
+		</div>
+	</div>
+</header>
+<section class="contacts">
+  <div class="container">
+    <div class="row">
+      <div class="box-content">
+        <nav class="crumbs">
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="index.html" class="breadcrumb">Главная</a>
+              <a href="contact.html" class="breadcrumb">Контакты</a>
+            </div>
+          </div>
+        </nav>
+        <div class="col s12">
+          <h2 class="center-align">Контакты</h2>
+          <p class="info center-align">Хлеб в пекарне Panella, которая представляет собой самый что ни на есть настоящий<br> семейный бизнес под руководством главы семьи Энцо Перна, замешивается на основе<br> закваски, используемой аж с 1963 года и хранимой в большом секрете.</p>
+        </div> <!-- col s12 -->
+      <div class="col s12 l6">
+        <div class="row">
+          <h3 class="center-align">Форма обратной связи</h3>
+            <form class="col s12" action="#">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate        ">
+                  <label for="first_name">Ваше имя</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="email" type="email" class="validate">
+                  <label for="email">Ваш email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="telephone" type="tel" name="tel" class="validate" pattern="[0-9]{7,11}">
+                  <label for="telephone">Ваш номер телефона</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="address" type="text" class="validate        ">
+                  <label for="address">Ваш адрес</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Ваше сообщение</label>
+                </div>
+              </div>
+                <p class="checkbox">
+                   <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+                   <label for="filled-in-box">Перезвонить</label>
+                </p>
+             <p class="click center-align"><input type="submit" value="Отправить"></p>
+          </form>
+        </div>
+      </div> <!-- col m12 l6 -->
+      <div class="col m12 l6">
+        <div class="row">
+          <h3 class="center-align">Как с нами связаться</h3>
+          <p class="info center-align">Наши операторы всегда ответят на Ваш звонок<br> и примят Ваш заказ с 8.00 до 22.00. Так же есть возможность обсуждение<br> специального заказа с главным пекарем в любом из наших магазинов.<br> Мы ждем Вашего звонка!</p>
+          <div class="row">
+            <div class=" col s6 center-align">
+              <dl class="title">
+                <dt>Телефон:</dt>
+              </dl>
+              <dl>
+                <dt>+388003094756</dt>
+                <dt>+380483094576</dt>
+              </dl>
+            </div>
+            <div class=" col s6 center-align">
+              <dl class="title">
+                <dt>Часы работы:</dt>
+              </dl>
+              <dl>
+                <dt>Пн-Сб&nbsp;&nbsp;&nbsp;с 9.00 до 20.00</dt>
+                <dt>Вс <span>с 9.00 до 22.00</span></dt>
+              </dl>
+            </div>
+          </div>
+          <div class=" col s12">
+            <div class="row">
+              <dl class="title center-align">
+                <dt>Юр. адрес:<span>Украина, 38000, г. Киев, ул. В. Винниченка, 16.</span></dt>
+              </dl>
+            </div>
+          </div>
+            <div class=" col s12 center-align">
+              <div class="row">
+                <ul class="icon-soc">
+                  <li><a href="vk.com" target="_blank"><img class="responsive-img" src="images/vk-2.png"></a></li>
+                  <li><a href="facebook.com" target="_blank"><img class="responsive-img" src="images/fb-2.png"></a></li>
+                  <li><a href="plus.google.com" target="_blank"><img class="responsive-img" src="images/gl-2.png"></a></li>
+                  <li><a href="instagram.com" target="_blank"><img class="responsive-img" src="images/insta-2.png"></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> <!-- col m12 l6  -->
+      </div> <!-- box-content -->
+    </div> <!-- row -->
+  </div> <!-- container -->
+</section>
+
+<!-- <section class="map">
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="titel-map center-align col s12">
+          <h6>Наши магазины</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="map">
+  <div class="wrapper">
+    <div class="titel-map center-align col s12">
+      <a href="contact.html"><h6>Наши магазины</h6></a>
+    </div>
+    <div id="map-canvas" height="320 " width="100%">
+    </div>
+ </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="navigation">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">
+            <img class="responsive-img" src="images/panella-logo.png" align="logo">
+              <p class="center-align">Italian bakery</p>
+            </a>
+                <ul class="right hide-on-med-and-down">
+                  <li><a href="index.html">Главная</a>
+                    <ul class="soc-box center-align">
+                      <li><a href="vk.com" target="_blank"><img src="images/vk.png" alt="icon"></a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Наша продукция</a>
+                    <ul class="soc-box center-align">
+                      <li><a href="facebook.com" target="_blank"><img src="images/fb.png" alt="icon"></a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Рецепты</a>
+                    <ul class="soc-box center-align">
+                      <li><a href="plus.google.com
+" target="_blank"><img src="images/gl.png" alt="icon"></a></li>
+                    </ul>
+                  </li>
+                  <li><a href="contact.html">Контакты</a>
+                    <ul class="soc-box center-align">
+                      <li><a href="instagram.com" target="_blank"><img src="images/insta.png" alt="icon"></a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <div class="contacts-phone">
+                      <a href="tel:+388003094756" class="phone">+388003094756</a>
+                      <a href="tel:+380483094576" class="phone">+380483094576</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+          </nav>
+        </div>
+      </div>
+      <p class="copyright center-align">Сайт разработан для Panella janekyr (c) 2016 </p>
+  </div>
+</footer>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript">
+         $('.parallax').parallax();
+      </script>
+      <script type="text/javascript">
+        $(".button-collapse").sideNav();
+      </script>
+</body>
+</html>
