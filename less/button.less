@@ -1,0 +1,33 @@
+// home-page
+// ================================
+.btn,
+.btn-large {
+    text-decoration: none;
+    color: #fff;
+    background-color: @c-buttons;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+    box-shadow: none;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    &:hover {
+       background-color: lighten(@c-but-hover, 10%);
+    }
+    &:active {
+       background-color: @c-but-active;
+       box-shadow: none;     
+    }
+}
+
+.products .btn,
+.products .btn-large {
+    margin-bottom: 10px;
+}
+
+.btn:focus,
+.btn-large:focus,
+.btn-floating:focus {
+    background-color: @c-but-hover;
+}
